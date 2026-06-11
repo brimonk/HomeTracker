@@ -1,0 +1,388 @@
+/* tracker.css — minimal, mobile-first - all clanker generated */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #fafaf8;
+  --surface:   #ffffff;
+  --border:    #e4e2db;
+  --text:      #1a1a18;
+  --muted:     #6b6a63;
+  --accent:    #2563eb;
+  --accent-bg: #eff6ff;
+  --radius:    10px;
+  --font:      system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #111110;
+    --surface:   #1c1c1a;
+    --border:    #2e2e2b;
+    --text:      #e8e6df;
+    --muted:     #8a8880;
+    --accent:    #60a5fa;
+    --accent-bg: #1a2740;
+  }
+}
+
+html { font-size: 16px; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ── Header ── */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.btn-new {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 0.35rem 0.75rem;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.btn-new:hover { opacity: 0.8; }
+
+/* ── Main layout ── */
+
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+/* ── Filter bar ── */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.pill {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  text-decoration: none;
+  background: var(--surface);
+  transition: background 0.12s, color 0.12s;
+}
+.pill:hover   { background: var(--border); color: var(--text); }
+.pill.active  { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+/* ── Event list ── */
+
+.date-hdr {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 1.25rem 0 0.4rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+.date-hdr:first-child { margin-top: 0; }
+
+ul.event-list, .event-list ul { list-style: none; }
+
+.event-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.925rem;
+}
+.event-row:last-child { border-bottom: none; }
+
+.event-row .who  { flex: 0 0 auto; }
+.event-row .what { flex: 1; font-weight: 500; }
+.event-row .when { flex: 0 0 auto; color: var(--muted); font-size: 0.82rem; }
+
+.empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+.empty a { color: var(--accent); }
+
+/* ── Step sections ── */
+
+.step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Person picker grid ── */
+
+.person-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.6rem;
+}
+
+.person-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.78rem;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+}
+.person-btn:hover { border-color: var(--accent); background: var(--accent-bg); }
+.person-btn .emoji { font-size: 2rem; line-height: 1; }
+.person-btn small  { font-size: 0.72rem; color: var(--muted); }
+
+.add-btn {
+  border-style: dashed;
+  color: var(--muted);
+  font-size: 1.5rem;
+  background: none;
+  border: 1px dashed var(--border);
+}
+.add-btn .emoji { font-size: 1.5rem; }
+
+/* ── Event type list ── */
+
+.event-type-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.event-type-btn {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.925rem;
+  transition: border-color 0.12s, background 0.12s;
+}
+.event-type-btn:hover { border-color: var(--accent); background: var(--accent-bg); }
+
+.add-etype-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  margin-top: 0.25rem;
+}
+.add-etype-btn:hover { opacity: 0.75; }
+
+/* ── Chosen person badge ── */
+
+.chosen-person {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+/* ── Confirm card ── */
+
+.confirm-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.confirm-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.confirm-summary .arrow { color: var(--muted); font-weight: 400; }
+
+.time-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.time-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.time-row input[type="time"],
+.time-row input[type="date"] {
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.65rem;
+  outline: none;
+  transition: border-color 0.15s;
+  appearance: auto;
+}
+.time-row input:focus { border-color: var(--accent); }
+
+.btn-create {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font);
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn-create:hover { opacity: 0.85; }
+
+.back {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.back a { color: var(--muted); }
+
+/* ── Inline add forms ── */
+
+.inline-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: flex-end;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.inline-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.inline-form input[type="text"] {
+  font-family: var(--font);
+  font-size: 0.925rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.6rem;
+  outline: none;
+}
+.inline-form input:focus { border-color: var(--accent); }
+
+.inline-form button[type="submit"] {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: var(--font);
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.inline-form button[type="button"] {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.875rem;
+  font-family: var(--font);
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
